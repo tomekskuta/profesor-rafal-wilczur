@@ -1,0 +1,11 @@
+{
+  "name": "profesor-rafal-wilczur",
+  "version": "1.0.0",
+  "description": "Your personal znachor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@tomekskuta-monterail",
+  "license": "ISC"
+}
