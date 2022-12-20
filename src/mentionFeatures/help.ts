@@ -35,6 +35,13 @@ const middleware = async ({ say }: SlackEventMiddlewareArgs): Promise<void> => {
           text: '`jak żyć?` - Dam Ci bezcenną wskazówkę. Podążaj za nią a Twoje życie będzie obfite.',
         },
       },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '`tarot` - Wyciągnę dla Ciebie kartę tarota z mojej talii. Niech będzie Twoim drogowskazem na dzisiejszy dzień',
+        },
+      },
 
       // TODO: Here add list of features with description
       // {

@@ -11,6 +11,7 @@ You can mention Profesor on a slack channel and he may responds to you (`@Profes
 - `help` - Helper message with list of Profesors features.
 - `hello` - Profesor will say hello to you
 - `jak żyć?` - Profesor will give you a precious life advice
+- `tarot` - Send you your daily tarot card
 
 ## Contribution
 
