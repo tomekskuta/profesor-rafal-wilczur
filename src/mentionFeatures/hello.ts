@@ -9,6 +9,9 @@ const question = [
   'hello',
   'dzień dobry',
   'uszanowanko',
+  'hej',
+  'welcome',
+  'elo',
 ];
 
 const answers = [
@@ -18,6 +21,7 @@ const answers = [
   'Cześć',
   'Dzień dobry',
   'Eluwina',
+  'No hejos',
 ];
 
 const middleware = async ({ say }: SlackEventMiddlewareArgs): Promise<void> => {

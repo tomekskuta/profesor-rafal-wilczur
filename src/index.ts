@@ -1,7 +1,8 @@
 import { App } from '@slack/bolt';
 import dotenv from 'dotenv';
 
-import mentionFeatures from './mentionFeatures';
+import useMentionFeatures from './mentionFeatures';
+import useMessageFeatures from './messageFeatures';
 
 dotenv.config();
 
@@ -23,23 +24,8 @@ const app = new App({
   ],
 });
 
-app.event('app_mention', async (eventMiddlewareArrgs) => {
-  const message = eventMiddlewareArrgs.payload.text
-    .split(' ')
-    .slice(1)
-    .join(' ')
-    .toLowerCase();
-
-  const featureMiddleware = mentionFeatures[message];
-
-  featureMiddleware
-    ? await featureMiddleware(eventMiddlewareArrgs)
-    : await mentionFeatures.help(eventMiddlewareArrgs);
-});
-
-app.message('Profesor Rafał Wilczur', async ({ say }) => {
-  await say('Czego?');
-});
+useMentionFeatures(app);
+useMessageFeatures(app);
 
 (async () => {
   await app.start();
