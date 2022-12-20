@@ -6,12 +6,14 @@ import { getFeatureObject } from '../utils/getFeatureObject';
 import help from './help';
 import hello from './hello';
 import lifeHacks from './lifeHacks';
+import tarot from './tarot';
 
 const featuresObject: Record<string, MentionFeature['middleware']> = [
   // TODO: Here you may add your mention feature
   help,
   hello,
   lifeHacks,
+  tarot,
 ].reduce((acc, curr) => ({ ...acc, ...getFeatureObject(curr) }), {});
 
 const useMentionFeatures = (app: App): void => {
