@@ -6,6 +6,7 @@ import hello from './hello';
 import lifeHacks from './lifeHacks';
 
 const featuresObject: Record<string, MentionFeature['middleware']> = [
+  // TODO: Here you may add your mention feature
   help,
   hello,
   lifeHacks,

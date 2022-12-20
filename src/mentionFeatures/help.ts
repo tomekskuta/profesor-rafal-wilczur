@@ -38,10 +38,10 @@ const middleware = async ({ say }: SlackEventMiddlewareArgs): Promise<void> => {
 
       // TODO: Here add list of features with description
       // {
-      //   type: 'mrkdwn',
+      //   type: 'section',
       //   text: {
-      //     type: 'plain_text',
-      //     text: 'Nowy ficzer',
+      //     type: 'mrkdwn',
+      //     text: '`Nowy ficzer` - Opis nowego ficzera',
       //   },
       // },
 
