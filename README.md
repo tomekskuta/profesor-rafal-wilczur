@@ -39,6 +39,13 @@ These features are triggered if someone send a specific message in a channel. Th
 - import and run you message feature in `src/messageFeatures/index.ts`.
 - I think sometimes it's not necessary to add these ones to `help` mention feature :thinking: They are kinda like casual reactions rather that some special features. But it depends on specific message feature I think :smile:
 
+#### Member events
+
+Events which listen on user activity. For now there are 2 of them:
+
+- `member_joined_channel` - when some user joined the channel. Profesor invites new users.
+- `member_left_channel` - when user left the channel. Profesor comments people who leave.
+
 #### Utils
 
 - `getRandomElement` - get random element from an array.
