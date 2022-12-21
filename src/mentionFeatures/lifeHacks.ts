@@ -21,6 +21,19 @@ const answers = [
   'Uczciwie',
   'Nie pij tyle',
   'Skromnie',
+  'Wstawaj wcześniej',
+  'Bierz większy ciężar',
+  'Pomódl się',
+  'Medytuj',
+  'Jakby jutra miało nie być',
+  'Przygarnij zwierzaka',
+  'Poczytaj Fromma',
+  'Jedz warzywa',
+  'Spuszczaj wodę',
+  'Nie jedz przetworzonej żywności',
+  'Wytrwale',
+  'Jedz 5 posiłków dziennie',
+  'Pij wodę z cytryną',
 ];
 
 const middleware: MentionFeature['middleware'] = async ({ say }) => {
