@@ -53,7 +53,6 @@ Events which listen on user activity. For now there are 2 of them:
 
 ### TODO:
 
-- Invitation for new joiners to the channel (subscribe special event for this)
 - Moon phases (requires new feature category `scheduledFeatures`)
 - Horoscope
 - Biorhythm
