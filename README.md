@@ -35,7 +35,7 @@ To create feature (works if user mention `@Profesor Rafał Wilczur` on Slack pri
 These features are triggered if someone send a specific message in a channel. They are placed in `src/messageFeatures` catalog. To create one:
 
 - Create file in `src/messageFeatures` - you can copy `_template.ts` file as well.
-- Subscribe to listen to specific message by running `app.message(message, middleware)` - `message` can be a string or Regexp. `middleware` is an async function.
+- Subscribe to listen to specific message by running `app.message(message, middleware)` - `message` can be a string or Regexp Don't forget to type `i` at the end of your expression to make Profesor case insensitive (`/^(do widzenia|do jutra).*/i`). `middleware` is an async function.
 - import and run you message feature in `src/messageFeatures/index.ts`.
 - I think sometimes it's not necessary to add these ones to `help` mention feature :thinking: They are kinda like casual reactions rather that some special features. But it depends on specific message feature I think :smile:
 
@@ -46,9 +46,8 @@ These features are triggered if someone send a specific message in a channel. Th
 
 ### TODO:
 
-- Tarot cards
 - Invitation for new joiners to the channel (subscribe special event for this)
-- Moon phases
+- Moon phases (requires new feature category `scheduledFeatures`)
 - Horoscope
 - Biorhythm
 - More ideas please :)

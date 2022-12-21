@@ -1,8 +1,12 @@
-import { SlackEventMiddlewareArgs } from '@slack/bolt';
-
+import type { MentionFeature } from '../types';
 import { getRandomElement } from '../utils/getRandomElement';
 
-const question = ['jak żyć?', 'jak żyć', 'jak zyc', 'jak zyc?'];
+const question: MentionFeature['question'] = [
+  'jak żyć?',
+  'jak żyć',
+  'jak zyc',
+  'jak zyc?',
+];
 
 const answers = [
   'Szybko',
@@ -15,9 +19,11 @@ const answers = [
   'Poradź sobie jakoś',
   'Pij wodę',
   'Uczciwie',
+  'Nie pij tyle',
+  'Skromnie',
 ];
 
-const middleware = async ({ say }: SlackEventMiddlewareArgs): Promise<void> => {
+const middleware: MentionFeature['middleware'] = async ({ say }) => {
   await say(getRandomElement(answers));
 };
 
