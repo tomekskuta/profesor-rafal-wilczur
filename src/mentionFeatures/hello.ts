@@ -1,8 +1,7 @@
-import { SlackEventMiddlewareArgs } from '@slack/bolt';
-
+import type { MentionFeature } from '../types';
 import { getRandomElement } from '../utils/getRandomElement';
 
-const question = [
+const question: MentionFeature['question'] = [
   'cześć',
   'witaj',
   'witamy',
@@ -24,8 +23,9 @@ const answers = [
   'No hejos',
 ];
 
-const middleware = async ({ say }: SlackEventMiddlewareArgs): Promise<void> => {
-  await say(getRandomElement(answers));
+const middleware: MentionFeature['middleware'] = async ({ say, payload }) => {
+  const { user } = payload;
+  await say(`${getRandomElement(answers)} <@${user}>`);
 };
 
 export default { question, middleware };

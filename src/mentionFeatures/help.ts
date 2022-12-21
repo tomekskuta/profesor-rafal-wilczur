@@ -1,8 +1,8 @@
-import { SlackEventMiddlewareArgs } from '@slack/bolt';
+import type { MentionFeature } from '../types';
 
-const question = ['help', 'pomóż', 'pomoz'];
+const question: MentionFeature['question'] = ['help', 'pomóż', 'pomoz'];
 
-const middleware = async ({ say }: SlackEventMiddlewareArgs): Promise<void> => {
+const middleware: MentionFeature['middleware'] = async ({ say }) => {
   await say({
     blocks: [
       {
