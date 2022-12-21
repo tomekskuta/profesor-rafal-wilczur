@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 
 import useMentionFeatures from './mentionFeatures';
 import useMessageFeatures from './messageFeatures';
+import useMembersEvents from './membersEvents';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ const app = new App({
 
 useMentionFeatures(app);
 useMessageFeatures(app);
+useMembersEvents(app);
 
 (async () => {
   await app.start();
