@@ -10,6 +10,13 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
   try {
     const inputDate = text.split('biorytm')[1].trim();
 
+    if (!inputDate) {
+      await say(
+        'Podaj datę urodzenia w formacie DD.MM.YYYY, przykład: `biorytm 02.04.2005`',
+      );
+      return;
+    }
+
     const result = calculateBiorythm(inputDate);
 
     await say({
@@ -46,7 +53,9 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
     });
   } catch {
     await say(
-      `Wybacz <@${user}>, nie potrafię obliczyć dla Ciebie biorytmu. /n Upewnij się, że `,
+      'Wybacz <@' +
+        user +
+        '>, nie potrafię obliczyć dla Ciebie biorytmu :cry: \n\nUpewnij się, że podana data urodzenia ma poprawny format (`DD.MM.YYYY`)',
     );
   }
 };

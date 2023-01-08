@@ -25,7 +25,7 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: '`pomóż` - Wyjaśnię Ci o jakie rzeczy możesz zapytać (ta wiadomość)',
+          text: '`pomóż` - Wyjaśnię Ci o jakie rzeczy możesz zapytać (ta wiadomość).',
         },
       },
       {
@@ -39,7 +39,14 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: '`tarot` - Wyciągnę dla Ciebie kartę tarota z mojej talii. Niech będzie Twoim drogowskazem na dzisiejszy dzień',
+          text: '`tarot` - Wyciągnę dla Ciebie kartę tarota z mojej talii. Niech będzie Twoim drogowskazem na dzisiejszy dzień.',
+        },
+      },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '`biorytm <data urodzenia>` - Obliczę dla Ciebie Twój biorytm na dziś.',
         },
       },
 

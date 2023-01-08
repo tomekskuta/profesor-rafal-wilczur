@@ -14,6 +14,11 @@ export function calculateBiorythm(dob: string): BiorythmResult {
     'DD-MM-YY',
   ]).startOf('day');
   const today = dayjs().startOf('day');
+
+  if (!today.isValid() || !dateOfBirth.isValid()) {
+    throw new Error('Invalid date');
+  }
+
   const diff = today.diff(dateOfBirth, 'day');
 
   return {
