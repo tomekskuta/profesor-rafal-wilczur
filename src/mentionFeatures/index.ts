@@ -7,6 +7,7 @@ import help from './help';
 import hello from './hello';
 import lifeHacks from './lifeHacks';
 import tarot from './tarot';
+import biorythm from './biorythm';
 
 const featuresObject: Record<string, MentionFeature['middleware']> = [
   // TODO: Here you may add your mention feature
@@ -14,15 +15,15 @@ const featuresObject: Record<string, MentionFeature['middleware']> = [
   hello,
   lifeHacks,
   tarot,
+  biorythm,
 ].reduce((acc, curr) => ({ ...acc, ...getFeatureObject(curr) }), {});
 
 const useMentionFeatures = (app: App): void => {
   app.event('app_mention', async (eventMiddlewareArrgs) => {
-    const message = eventMiddlewareArrgs.payload.text
-      .split(' ')
-      .slice(1)
-      .join(' ')
-      .toLowerCase();
+    const incomingMessage = eventMiddlewareArrgs.payload.text;
+    const message = incomingMessage.includes('biorytm')
+      ? 'biorytm'
+      : incomingMessage.split(' ').slice(1).join(' ').toLowerCase();
 
     const featureMiddleware = featuresObject[message];
 
