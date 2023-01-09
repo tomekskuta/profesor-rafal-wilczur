@@ -1,6 +1,5 @@
 import type { MentionFeature } from '../types';
 import { calculateBiorythm } from '../utils/calculateBiorythm';
-import dayjs from 'dayjs';
 
 const question: MentionFeature['question'] = ['biorytm'];
 
