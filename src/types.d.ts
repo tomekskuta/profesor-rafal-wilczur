@@ -6,3 +6,9 @@ interface MentionFeature {
     middlewareArgs: SlackEventMiddlewareArgs<'app_mention'>,
   ) => Promise<void>;
 }
+
+interface BiorythmResult {
+  physical: number;
+  emotional: number;
+  intellectual: number;
+}
