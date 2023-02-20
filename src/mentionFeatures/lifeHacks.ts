@@ -34,6 +34,11 @@ const answers = [
   'Wytrwale',
   'Jedz 5 posiłków dziennie',
   'Pij wodę z cytryną',
+  'Na bogato',
+  'W mieszkaniu z ogrzewaniem miejskim',
+  'Teraz',
+  'Nie stresuj się rzeczami na które nie masz wpływu',
+  'Zamów pizzę',
 ];
 
 const middleware: MentionFeature['middleware'] = async ({ say }) => {
