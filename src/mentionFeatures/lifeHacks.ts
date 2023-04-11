@@ -37,8 +37,17 @@ const answers = [
   'Na bogato',
   'W mieszkaniu z ogrzewaniem miejskim',
   'Teraz',
-  'Nie stresuj się rzeczami na które nie masz wpływu',
+  'Nie stresuj się rzeczami na które nie masz wpływu',
   'Zamów pizzę',
+  'Badaj się regularnie',
+  'Otwórz się na zmiany',
+  'Rozciągaj się co najmniej 15 minut dziennie',
+  'Dbaj o ciało, umysł i duszę :dorime:',
+  'Dbaj o relacje z ludźmi',
+  'Kup sobie coś fajnego',
+  'Idź na spacer',
+  'Zrób sobie czasem przerwę w pracy',
+  'Przed snem ograniczaj niebieskie światło',
 ];
 
 const middleware: MentionFeature['middleware'] = async ({ say }) => {
