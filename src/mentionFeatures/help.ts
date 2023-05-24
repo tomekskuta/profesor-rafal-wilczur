@@ -49,6 +49,13 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
           text: '`biorytm <data urodzenia>` - Obliczę dla Ciebie Twój biorytm na dziś.',
         },
       },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '`będzie dobrze?` - Powiem Ci czy będzie czy nie.',
+        },
+      },
 
       // TODO: Here add list of features with description
       // {
