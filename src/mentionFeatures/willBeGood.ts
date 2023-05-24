@@ -14,7 +14,7 @@ const answers = ['będzie dobrze!', 'nie będzie.'];
 const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
   const { user } = event;
 
-  await say(`*<@${user}> ${getRandomElement(answers)}`);
+  await say(`<@${user}> ${getRandomElement(answers)}`);
 };
 
 export default { question, middleware };
