@@ -1,7 +1,6 @@
 import type { MentionFeature } from '../types';
 import { getRandomElement } from '../utils/getRandomElement';
 
-// TODO: Question for Profesor, on slack is used after mentioning Profesor - string | string[]
 const question: MentionFeature['question'] = [
   'będzie dobrze?',
   'bedzie dobrze?',
@@ -9,7 +8,11 @@ const question: MentionFeature['question'] = [
   'bedzie dobrze',
 ];
 
-const answers = ['będzie dobrze!', 'nie będzie.'];
+const answers = [
+  'będzie dobrze!',
+  'nie będzie.',
+  'https://www.youtube.com/watch?v=7ZjbOzsIaRs',
+];
 
 const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
   const { user } = event;
