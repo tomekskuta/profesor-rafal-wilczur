@@ -20,6 +20,13 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
       blocks: [
         {
           type: 'video',
+          alt_text: 'Będzie dobrze',
+          title: {
+            type: 'plain_text',
+            text: 'Będzie dobrze',
+            emoji: true,
+          },
+          thumbnail_url: 'https://i.ytimg.com/vi/7ZjbOzsIaRs/maxresdefault.jpg',
           video_url: 'https://youtube.com/embed/7ZjbOzsIaRs',
         },
       ],
