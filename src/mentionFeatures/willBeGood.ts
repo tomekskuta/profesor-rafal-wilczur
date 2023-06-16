@@ -20,7 +20,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
       blocks: [
         {
           type: 'video',
-          video_url: 'https://www.youtube.com/embed/7ZjbOzsIaRs',
+          video_url: 'https://youtube.com/embed/7ZjbOzsIaRs',
         },
       ],
     });
@@ -28,7 +28,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
     return;
   }
 
-  await say(`<@${user}> ${getRandomElement(answers)}`);
+  await say(`<@${user}> ${answer}`);
 };
 
 export default { question, middleware };
