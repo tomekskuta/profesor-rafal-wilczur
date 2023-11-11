@@ -65,6 +65,14 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
       //     text: '`Nowy ficzer` - Opis nowego ficzera',
       //   },
       // },
+      
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '`czy dam radę` - odpowiem czy poradzisz sobie z tym co Cię trapi.',
+        },
+      },
 
       { type: 'divider' },
       {

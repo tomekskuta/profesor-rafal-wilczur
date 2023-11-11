@@ -9,6 +9,7 @@ import lifeHacks from './lifeHacks';
 import tarot from './tarot';
 import biorythm from './biorythm';
 import willBeGood from './willBeGood';
+import willISuccede from './willISuccede';
 
 const featuresObject: Record<string, MentionFeature['middleware']> = [
   // TODO: Here you may add your mention feature
@@ -18,6 +19,7 @@ const featuresObject: Record<string, MentionFeature['middleware']> = [
   tarot,
   biorythm,
   willBeGood,
+  willISuccede,
 ].reduce((acc, curr) => ({ ...acc, ...getFeatureObject(curr) }), {});
 
 const useMentionFeatures = (app: App): void => {
