@@ -56,6 +56,13 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
           text: '`będzie dobrze?` - Powiem Ci czy będzie czy nie.',
         },
       },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '`czy dam radę` - odpowiem czy poradzisz sobie z tym co Cię trapi.',
+        },
+      },
 
       // TODO: Here add list of features with description
       // {
@@ -65,14 +72,6 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
       //     text: '`Nowy ficzer` - Opis nowego ficzera',
       //   },
       // },
-      
-      {
-        type: 'section',
-        text: {
-          type: 'mrkdwn',
-          text: '`czy dam radę` - odpowiem czy poradzisz sobie z tym co Cię trapi.',
-        },
-      },
 
       { type: 'divider' },
       {
