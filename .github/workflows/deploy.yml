@@ -34,11 +34,19 @@ jobs:
         VPS_HOST: ${{ secrets.VPS_HOST }}
         VPS_PATH: ${{ secrets.VPS_PATH }}
         VPS_PORT: ${{ secrets.VPS_PORT }}
+      uses: burnett01/rsync-deployments@7.0.1
+      with:
+        switches: -avz --delete
+        path: .
+        remote_path: ${{ secrets.VPS_PATH }}
+        remote_host: ${{ secrets.VPS_HOST }}
+        remote_port: ${{ secrets.VPS_PORT }}
+        remote_user: ${{ secrets.VPS_USER }}
+        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}  
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
         mkdir -p ~/.ssh
         ssh-keyscan -p $VPS_PORT $VPS_HOST >> ~/.ssh/known_hosts
-        rsync -avz --delete -e "ssh -p $VPS_PORT -i private_key" --exclude 'node_modules' ./ $VPS_USER@$VPS_HOST:$VPS_PATH
         ssh -i private_key $VPS_USER@$VPS_HOST -p $VPS_PORT "cd $VPS_PATH && yarn && pm2 restart all"
         rm private_key
