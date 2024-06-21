@@ -1,0 +1,42 @@
+name: Deploy Profestor App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22.2.0'
+
+    - name: Install dependencies
+      run: yarn
+
+    - name: Run ESLint
+      run: yarn lint
+
+    - name: Build the app
+      run: yarn build
+
+    - name: Deploy to VPS
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        VPS_USER: ${{ secrets.VPS_USER }}
+        VPS_HOST: ${{ secrets.VPS_HOST }}
+        VPS_PATH: ${{ secrets.VPS_PATH }}
+        VPS_PORT: ${{ secrets.VPS_PORT }}
+      run: |
+        echo "$SSH_PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        rsync -avz --delete -e "ssh -p $VPS_PORT -i private_key" --exclude 'node_modules' ./ $VPS_USER@$VPS_HOST:$VPS_PATH
+        ssh -i private_key $VPS_USER@$VPS_HOST -p $VPS_PORT "cd $VPS_PATH && yarn && pm2 restart all"
+        rm private_key
