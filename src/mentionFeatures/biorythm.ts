@@ -31,21 +31,21 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: '- Fizyczny: ' + result.physical + '%',
+            text: `- Fizyczny: ${result.physical}%`,
           },
         },
         {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: '- Emocjonalny: ' + result.emotional + '%',
+            text: `- Emocjonalny: ${result.emotional}%`,
           },
         },
         {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: '- Intelektualny: ' + result.intellectual + '%',
+            text: `- Intelektualny: ${result.intellectual}%`,
           },
         },
       ],
