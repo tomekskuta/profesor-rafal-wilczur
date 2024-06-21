@@ -37,6 +37,8 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
+        mkdir -p ~/.ssh
+        ssh-keyscan -p $VPS_PORT $VPS_HOST >> ~/.ssh/known_hosts
         rsync -avz --delete -e "ssh -p $VPS_PORT -i private_key" --exclude 'node_modules' ./ $VPS_USER@$VPS_HOST:$VPS_PATH
         ssh -i private_key $VPS_USER@$VPS_HOST -p $VPS_PORT "cd $VPS_PATH && yarn && pm2 restart all"
         rm private_key
