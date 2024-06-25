@@ -30,7 +30,7 @@ jobs:
     - name: Deploy to VPS
       uses: burnett01/rsync-deployments@7.0.1
       with:
-        switches: -avz --delete
+        switches: -avz --delete --exclude="node_modules"
         path: .
         remote_path: ${{ secrets.VPS_PATH }}
         remote_host: ${{ secrets.VPS_HOST }}
@@ -38,17 +38,19 @@ jobs:
         remote_user: ${{ secrets.VPS_USER }}
         remote_key: ${{ secrets.SSH_PRIVATE_KEY }}  
 
-    - name: Restart the app
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        VPS_USER: ${{ secrets.VPS_USER }}
-        VPS_HOST: ${{ secrets.VPS_HOST }}
-        VPS_PATH: ${{ secrets.VPS_PATH }}
-        VPS_PORT: ${{ secrets.VPS_PORT }}
-      run: |
-        echo "$SSH_PRIVATE_KEY" > private_key
-        chmod 600 private_key
-        mkdir -p ~/.ssh
-        ssh-keyscan -p $VPS_PORT $VPS_HOST >> ~/.ssh/known_hosts
-        ssh -i private_key $VPS_USER@$VPS_HOST -p $VPS_PORT "cd $VPS_PATH && yarn && pm2 restart all"
-        rm private_key
+    - name: Setup and restart the app
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.VPS_PORT }}
+        script: |
+          cd ${{ secrets.VPS_PATH }}
+          rm .env
+          touch .env
+          echo "SLACK_APP_TOKEN=${{ secrets.SLACK_APP_TOKEN }}" >> .env
+          echo "SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}" >> .env
+          echo "SLACK_SIGNING_SECRET=${{ secrets.SLACK_SIGNING_SECRET }}" >> .env
+          yarn && pm2 restart profesor
+
