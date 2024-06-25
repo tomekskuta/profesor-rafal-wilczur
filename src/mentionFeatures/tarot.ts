@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 import { parse } from 'node-html-parser';
 
 import type { MentionFeature } from '../types';
