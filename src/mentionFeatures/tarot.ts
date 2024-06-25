@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 import { parse } from 'node-html-parser';
 
 import type { MentionFeature } from '../types';
@@ -21,6 +20,8 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
   const { user } = event;
 
   try {
+    const { default: fetch } = await import('node-fetch');
+
     const response = await fetch('https://blog.otylia.pl/karta-dnia-tarot/');
     const html = await response.text();
 
