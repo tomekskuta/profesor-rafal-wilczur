@@ -71,7 +71,8 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
         })),
       ],
     });
-  } catch {
+  } catch (error) {
+    console.error(error);
     await say(`Wybacz <@${user}>, tym razem nie mam dla Ciebie karty`);
   }
 };
