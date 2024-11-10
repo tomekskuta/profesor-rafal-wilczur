@@ -58,5 +58,9 @@ jobs:
           nvm use 16.20.2
           npm install -g yarn
           yarn install
-          pm2 restart profesor
+          if pm2 list | grep -q "profesor"; then
+            pm2 restart profesor
+          else
+            pm2 start dist/index.js --name profesor
+          fi
 
