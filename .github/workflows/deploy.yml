@@ -48,7 +48,7 @@ jobs:
         port: ${{ secrets.VPS_PORT }}
         script: |
           cd ${{ secrets.VPS_PATH }}
-          rm .env
+          [ -f .env ] && rm .env
           touch .env
           echo "SLACK_APP_TOKEN=${{ secrets.SLACK_APP_TOKEN }}" >> .env
           echo "SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}" >> .env
