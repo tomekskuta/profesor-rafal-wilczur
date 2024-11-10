@@ -53,5 +53,10 @@ jobs:
           echo "SLACK_APP_TOKEN=${{ secrets.SLACK_APP_TOKEN }}" >> .env
           echo "SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}" >> .env
           echo "SLACK_SIGNING_SECRET=${{ secrets.SLACK_SIGNING_SECRET }}" >> .env
-          yarn && pm2 restart profesor
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          nvm use 16.20.2
+          npm install -g yarn
+          yarn install
+          pm2 restart profesor
 
