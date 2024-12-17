@@ -85,7 +85,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
     
     await say(text);
   } catch (error) {
-    // Fallback to random answer if AI fails
+    console.error('[ERROR] Error in lifeHacks middleware:', JSON.stringify(error, null, 2));
     await say(getRandomElement(answers));
   }
 };
