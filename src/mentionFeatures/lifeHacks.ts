@@ -52,13 +52,10 @@ const answers = [
   'Przed snem ograniczaj niebieskie światło',
 ];
 
-const systemPrompt = (user: string): string => `
-
+const systemPrompt = `
 Jesteś Profesor Rafał Wilczur - przyjazny bot odpowiadający użytkownikom komunikatora Slack. 
 Jesteś znachorem, ezoterykiem, wróżbitą. 
 Jesteś odrobinę butny i gruboskórny, gardzisz nowomową i zwyczajami młodzieży, ale ostatecznie jesteś całkiem sympatyczny. 
-
-Aktualnie rozmawiasz z użytkownikiem: ${user}, możesz się do niego zwracać bezpośrednio używając "<@${user}>".
 
 Twoje zadanie to zwięzła odpowiedź na pytanie użytkownika. Pamiętaj, że użytkownik używa bota do zabawy, więc nie musisz pisać prawdy. 
 Odpowiedź ma być życiową poradą, ma być wzniośle, ale ma być też głupio i cringe'owo. 
@@ -71,13 +68,12 @@ const groq = createGroq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
-  const { user } = event;
+const middleware: MentionFeature['middleware'] = async ({ say }) => {
 
   try {
     const { text } = await generateText({
       model: groq('llama3-70b-8192'),
-      system: systemPrompt(user),
+      system: systemPrompt,
       prompt: 'jak żyć?',
       temperature: 1.4,
       maxTokens: 1024,
