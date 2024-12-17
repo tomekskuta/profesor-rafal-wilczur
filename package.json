@@ -26,7 +26,9 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^1.0.8",
     "@slack/bolt": "^3.12.2",
+    "ai": "^4.0.18",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "node-fetch": "2.7.0",
