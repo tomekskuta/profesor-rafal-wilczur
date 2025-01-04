@@ -13,6 +13,8 @@ You can mention Profesor on a slack channel and he may responds to you (`@Profes
 - `jak żyć?` - Profesor will give you a precious life advice
 - `tarot` - Send you your daily tarot card
 - `będzie dobrze?` - Profesor will tell you if will be good today or not
+- `biorytm` - Profesor will count and send you your biorhythm
+- `czy dam radę?` - Profesor will tell you if will handle your stuff
 
 ## Contribution
 
@@ -52,9 +54,27 @@ Events which listen on user activity. For now there are 2 of them:
 - `getRandomElement` - get random element from an array.
 - `getFeatureObject` - creates object from questions array and middleware. Such object is used by Profesor to fast match correct middleware with the question in the event callback.
 
+#### Env variables
+
+If you feature requires some environment variables in the runtime you need to follow few steps:
+
+- Add it to `.env.example` file.
+- Add it to `./.github/workflows/deploy.yml` file inside `Setup and restart the app` section to add it to the VPS.
+- Send variable name and value to GH repo admin to add it to secrets.
+
+#### Development
+
+To run the app locally:
+
+```sh
+cp .env.example .env # if you need values for variables ask GH repo admin for them
+
+yarn
+yarn dev
+```
+
 ### TODO:
 
 - Moon phases (requires new feature category `scheduledFeatures`)
 - Horoscope
-- Biorhythm
 - More ideas please :)

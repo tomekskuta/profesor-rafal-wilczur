@@ -54,10 +54,6 @@ jobs:
           echo "SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}" >> .env
           echo "SLACK_SIGNING_SECRET=${{ secrets.SLACK_SIGNING_SECRET }}" >> .env
           echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> .env
-          # export NVM_DIR="$HOME/.nvm"
-          # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          # nvm use 16.20.2
-          # npm install -g yarn
           yarn install
           if pm2 list | grep -q "profesor"; then
             pm2 restart profesor
