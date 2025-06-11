@@ -10,6 +10,7 @@ import tarot from './tarot';
 import biorythm from './biorythm';
 import willBeGood from './willBeGood';
 import willISuccede from './willISuccede';
+import askQuestion from './askQuestion';
 
 const featuresObject: Record<string, MentionFeature['middleware']> = [
   // TODO: Here you may add your mention feature
@@ -20,15 +21,58 @@ const featuresObject: Record<string, MentionFeature['middleware']> = [
   biorythm,
   willBeGood,
   willISuccede,
+  askQuestion,
 ].reduce((acc, curr) => ({ ...acc, ...getFeatureObject(curr) }), {});
+
+const checkForQuestionPattern = (text: string): string | null => {
+  const lowerText = text.toLowerCase();
+  
+  // Check for specific question patterns
+  const questionPatterns = [
+    'pytanie:',
+    'pytanie',
+    'mam pytanie',
+    'odpowiedz na pytanie',
+    'odpowiedź na pytanie',
+    'chcę zapytać',
+    'chce zapytac',
+    'mam pytanko',
+    'pytanko',
+    'zapytam',
+    'zapytanie'
+  ];
+
+  for (const pattern of questionPatterns) {
+    if (lowerText.includes(pattern)) {
+      // Return the first matching pattern found in featuresObject
+      if (featuresObject[pattern]) {
+        return pattern;
+      }
+    }
+  }
+
+  return null;
+};
 
 const useMentionFeatures = (app: App): void => {
   app.event('app_mention', async (eventMiddlewareArrgs) => {
     const incomingMessage = eventMiddlewareArrgs.payload.text;
-    const message = incomingMessage.includes('biorytm')
-      ? 'biorytm'
-      : incomingMessage.split(' ').slice(1).join(' ').toLowerCase();
+    
+    // Check for special cases first
+    if (incomingMessage.includes('biorytm')) {
+      await featuresObject.biorytm(eventMiddlewareArrgs);
+      return;
+    }
 
+    // Check for question patterns
+    const questionPattern = checkForQuestionPattern(incomingMessage);
+    if (questionPattern) {
+      await featuresObject[questionPattern](eventMiddlewareArrgs);
+      return;
+    }
+
+    // Default parsing for other features
+    const message = incomingMessage.split(' ').slice(1).join(' ').toLowerCase();
     const featureMiddleware = featuresObject[message];
 
     featureMiddleware
