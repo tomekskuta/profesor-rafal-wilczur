@@ -27,7 +27,7 @@ const featuresObject: Record<string, MentionFeature['middleware']> = [
 const checkForQuestionPattern = (text: string): string | null => {
   const lowerText = text.toLowerCase();
   
-  // Check for specific question patterns
+  // Check for specific question patterns - MUST MATCH askQuestion.ts exactly
   const questionPatterns = [
     'pytanie:',
     'pytanie',
@@ -42,12 +42,10 @@ const checkForQuestionPattern = (text: string): string | null => {
     'zapytanie'
   ];
 
+  // Check if any of the patterns exist in the text AND in featuresObject
   for (const pattern of questionPatterns) {
-    if (lowerText.includes(pattern)) {
-      // Return the first matching pattern found in featuresObject
-      if (featuresObject[pattern]) {
-        return pattern;
-      }
+    if (lowerText.includes(pattern) && featuresObject[pattern]) {
+      return pattern;
     }
   }
 

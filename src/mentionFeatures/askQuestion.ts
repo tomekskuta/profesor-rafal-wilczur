@@ -98,7 +98,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
       maxTokens: 512,
     });
     
-    await say(`<@${user}>, ${aiResponse} :crystal_ball:`);
+    await say(aiResponse);
   } catch (error) {
     console.error('[ERROR] Error in askQuestion middleware:', JSON.stringify(error, null, 2));
     await say(
