@@ -63,6 +63,13 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
           text: '`czy dam radę` - odpowiem czy poradzisz sobie z tym co Cię trapi.',
         },
       },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '`pytanie: <twoje pytanie>` - Odpowiem na dowolne pytanie używając mojej mądrości i doświadczenia.',
+        },
+      },
 
       // TODO: Here add list of features with description
       // {
