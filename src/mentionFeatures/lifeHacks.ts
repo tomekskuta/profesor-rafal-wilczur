@@ -72,7 +72,7 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
 
   try {
     const { text } = await generateText({
-      model: groq('llama3-70b-8192'),
+      model: groq('llama-3.3-70b-versatile'),
       system: systemPrompt,
       prompt: 'jak żyć?',
       temperature: 1.4,
