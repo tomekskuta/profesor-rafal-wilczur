@@ -3,6 +3,10 @@ import { calculateBiorythm } from '../utils/calculateBiorythm';
 
 const question: MentionFeature['question'] = ['biorytm'];
 
+const matcher: MentionFeature['matcher'] = (text: string) => {
+  return text.toLowerCase().includes('biorytm');
+};
+
 const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
   const { user, text } = event;
 
@@ -59,4 +63,4 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
   }
 };
 
-export default { question, middleware };
+export default { question, middleware, matcher };

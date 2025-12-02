@@ -85,7 +85,7 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
         type: 'section',
         text: {
           type: 'plain_text',
-          text: 'Co? Mało? Wy millenialsi wszystko chcecie od razu. Cierpliwości. Niebawem dowiesz się więcej.',
+          text: 'Co? Mało? Wy millenialsi wszystko chcecie od razu. Cierpliwości. Niebawem będę mógł pomóc Ci z innymi problemami.',
         },
       },
     ],

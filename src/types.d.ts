@@ -5,6 +5,7 @@ interface MentionFeature {
   middleware: (
     middlewareArgs: SlackEventMiddlewareArgs<'app_mention'>,
   ) => Promise<void>;
+  matcher?: (text: string) => boolean;
 }
 
 interface BiorythmResult {

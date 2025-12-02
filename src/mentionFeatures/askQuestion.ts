@@ -2,7 +2,9 @@ import type { MentionFeature } from '../types';
 import { generateText } from 'ai';
 import { createGroq } from '@ai-sdk/groq';
 
-const question: MentionFeature['question'] = [
+const question: MentionFeature['question'] = ['pytanie'];
+
+const questionPatterns = [
   'pytanie:',
   'pytanie',
   'mam pytanie',
@@ -13,8 +15,13 @@ const question: MentionFeature['question'] = [
   'mam pytanko',
   'pytanko',
   'zapytam',
-  'zapytanie'
+  'zapytanie',
 ];
+
+const matcher: MentionFeature['matcher'] = (text: string) => {
+  const lowerText = text.toLowerCase();
+  return questionPatterns.some(pattern => lowerText.includes(pattern));
+};
 
 const systemPrompt = `
 Jesteś Profesor Rafał Wilczur - przyjazny bot odpowiadający użytkownikom komunikatora Slack. 
@@ -37,7 +44,7 @@ const groq = createGroq({
 const extractQuestionFromText = (text: string): string | null => {
   // Remove bot mention from the beginning
   const cleanText = text.replace(/<@[^>]+>/, '').trim();
-  
+
   // Try different patterns to extract the question
   const patterns = [
     /pytanie:\s*(.*)/i,
@@ -57,7 +64,7 @@ const extractQuestionFromText = (text: string): string | null => {
   // and extract everything after them
   const questionWords = ['pytanie', 'pytanko', 'zapytam', 'zapytanie'];
   const lowerText = cleanText.toLowerCase();
-  
+
   for (const word of questionWords) {
     const index = lowerText.indexOf(word);
     if (index !== -1) {
@@ -85,7 +92,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
         `• \`pytanie: Twoje pytanie\`\n` +
         `• \`mam pytanie o...\`\n` +
         `• \`odpowiedz na pytanie: ...\`\n` +
-        `• \`pytanie jak...\` :thinking_face:`
+        `• \`pytanie jak...\` :thinking_face:`,
       );
       return;
     }
@@ -95,16 +102,19 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
       system: systemPrompt,
       prompt: questionText,
       temperature: 1.2,
-      maxTokens: 512,
+      maxOutputTokens: 512,
     });
-    
+
     await say(aiResponse);
   } catch (error) {
-    console.error('[ERROR] Error in askQuestion middleware:', JSON.stringify(error, null, 2));
+    console.error(
+      '[ERROR] Error in askQuestion middleware:',
+      JSON.stringify(error, null, 2),
+    );
     await say(
-      `<@${user}>, przepraszam, ale moja kryształowa kula się zepsuła :broken_heart: Spróbuj ponownie za chwilę.`
+      `<@${user}>, przepraszam, ale moja kryształowa kula się zepsuła :broken_heart: Spróbuj ponownie za chwilę.`,
     );
   }
 };
 
-export default { question, middleware }; 
+export default { question, middleware, matcher };
