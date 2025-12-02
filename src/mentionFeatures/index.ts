@@ -11,6 +11,7 @@ import biorythm from './biorythm';
 import willBeGood from './willBeGood';
 import willISuccede from './willISuccede';
 import askQuestion from './askQuestion';
+import thankyou from './thankyou';
 
 const features: MentionFeature[] = [
   // TODO: Here you may add your mention feature
@@ -22,6 +23,7 @@ const features: MentionFeature[] = [
   willBeGood,
   willISuccede,
   askQuestion,
+  thankyou,
 ];
 
 const featuresObject: Record<string, MentionFeature['middleware']> = features.reduce(
