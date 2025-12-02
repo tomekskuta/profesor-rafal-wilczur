@@ -37,7 +37,7 @@ const useMentionFeatures = (app: App): void => {
 
     // Check pattern matchers first
     for (const feature of patternFeatures) {
-      if (feature.matcher!(incomingMessage)) {
+      if (feature.matcher(incomingMessage)) {
         await feature.middleware(eventMiddlewareArrgs);
         return;
       }

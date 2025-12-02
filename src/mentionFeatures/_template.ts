@@ -4,7 +4,7 @@ import type { MentionFeature } from '../types';
 const question: MentionFeature['question'] = 'your question';
 
 const matcher: MentionFeature['matcher'] = (message) => {
-  // TODO: (optional) your matcher function for custom logic
+  // TODO: (optional) your matcher function for custom logic - delete if you don't need it
   return true;
 }
 
