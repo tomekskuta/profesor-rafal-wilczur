@@ -13,8 +13,7 @@ import type { CronFeature } from '../types';
 
 const feature: CronFeature = {
   schedule: '0 9 * * *', // 9 AM daily
-  handler: async (app) => {
-    const channel = process.env.MAIN_CHANNEL;
+  handler: async (app, channel) => {
     await app.client.chat.postMessage({
       channel,
       text: 'Your message here',

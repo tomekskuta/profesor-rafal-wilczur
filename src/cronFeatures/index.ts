@@ -26,7 +26,7 @@ const useCronFeatures = (app: App): void => {
         `⚙️  [${new Date().toISOString()}] Executing cron #${index + 1}`,
       );
       try {
-        await feature.handler(app);
+        await feature.handler(app, slackChannel);
         console.log(
           `✅ [${new Date().toISOString()}] Completed cron #${index + 1}`,
         );
@@ -63,7 +63,7 @@ const useCronFeatures = (app: App): void => {
       const feature = features[index];
       if (feature) {
         try {
-          await feature.handler(app);
+          await feature.handler(app, process.env.ADMIN_CHANNEL);
           await say(`✅ Executed cron #${index + 1}`);
         } catch (error) {
           await say(`❌ Failed: ${error.message}`);

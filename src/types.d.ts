@@ -16,5 +16,5 @@ interface BiorythmResult {
 
 interface CronFeature {
   schedule: string;
-  handler: (app: App) => Promise<void>;
+  handler: (app: App, channel: string) => Promise<void>;
 }

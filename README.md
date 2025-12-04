@@ -56,7 +56,7 @@ Scheduled jobs that execute at specific times using cron expressions. To create 
 
 - Create file in `src/cronFeatures` - you can copy `_template.ts` file as a starting point.
 - `schedule` is a cron expression string (e.g., `'0 9 * * 1-5'` for 9 AM Monday-Friday). See [cron syntax](https://www.npmjs.com/package/node-cron#cron-syntax).
-- `handler` is an async function that receives the `app` instance. Call `app.client.chat.postMessage()` to send messages to the channel specified in `MAIN_CHANNEL` env variable.
+- `handler` is an async function that receives the `app` instance and `channel` name. Call `app.client.chat.postMessage()` to send messages to the channel specified in `MAIN_CHANNEL` env variable.
 - Import and add your feature to the `features` array in `src/cronFeatures/index.ts`.
 - Test with `/test-cron <number>` command in development to manually trigger jobs without waiting for the schedule.
 

@@ -46,8 +46,7 @@ const groq = createGroq({
 
 const feature: CronFeature = {
   schedule: '30 8 * * 1-5', // 8:30 AM, Monday-Friday
-  handler: async (app) => {
-    const channel = process.env.MAIN_CHANNEL;
+  handler: async (app, channel) => {
     const weatherApiKey = process.env.WEATHER_API_KEY;
 
     const weather = await fetch(

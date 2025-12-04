@@ -21,7 +21,7 @@ React to `member_joined_channel` and `member_left_channel` events
 ### 4. Cron Features (`src/cronFeatures/`)
 Scheduled jobs using `node-cron`. Each feature exports:
 - `schedule`: string - cron expression (e.g., '0 9 * * 1-5')
-- `handler`: async function with app parameter
+- `handler`: async function with app an channel parameters
 
 Flow: App starts → cron jobs scheduled → handlers execute on schedule
 
