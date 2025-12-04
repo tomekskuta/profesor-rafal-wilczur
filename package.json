@@ -14,6 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node-cron": "^3.0.11",
+    "@types/node-fetch": "^2.6.13",
     "@typescript-eslint/eslint-plugin": "8.48.1",
     "eslint": "9.39.1",
     "eslint-config-prettier": "10.1.8",

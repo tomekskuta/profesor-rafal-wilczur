@@ -54,6 +54,8 @@ jobs:
           echo "SLACK_BOT_TOKEN=${{ secrets.SLACK_BOT_TOKEN }}" >> .env
           echo "SLACK_SIGNING_SECRET=${{ secrets.SLACK_SIGNING_SECRET }}" >> .env
           echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> .env
+          echo "MAIN_CHANNEL=${{ secrets.MAIN_CHANNEL }}" >> .env
+          echo "WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}" >> .env
           yarn install
           if pm2 list | grep -q "profesor"; then
             pm2 restart profesor

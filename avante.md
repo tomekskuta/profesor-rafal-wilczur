@@ -43,4 +43,4 @@ src/
 4. **Cron**: Create in `cronFeatures/`, add to features array in index
 
 ## Config (.env)
-`SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET`, `SLACK_APP_TOKEN`, `GROQ_API_KEY`, `PORT`, `MAIN_CHANNEL`
+`SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET`, `SLACK_APP_TOKEN`, `GROQ_API_KEY`, `PORT`, `MAIN_CHANNEL`, `WEATHER_API_KEY`
