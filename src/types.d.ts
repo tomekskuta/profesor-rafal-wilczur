@@ -1,4 +1,4 @@
-import { SlackEventMiddlewareArgs } from '@slack/bolt';
+import { SlackEventMiddlewareArgs, App } from '@slack/bolt';
 
 interface MentionFeature {
   question: string | string[];
@@ -12,4 +12,9 @@ interface BiorythmResult {
   physical: number;
   emotional: number;
   intellectual: number;
+}
+
+interface CronFeature {
+  schedule: string;
+  handler: (app: App) => Promise<void>;
 }

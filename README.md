@@ -50,6 +50,16 @@ Events which listen on user activity. For now there are 2 of them:
 - `member_joined_channel` - when some user joined the channel. Profesor invites new users.
 - `member_left_channel` - when user left the channel. Profesor comments people who leave.
 
+#### Cron features
+
+Scheduled jobs that execute at specific times using cron expressions. To create one:
+
+- Create file in `src/cronFeatures` - you can copy `_template.ts` file as a starting point.
+- `schedule` is a cron expression string (e.g., `'0 9 * * 1-5'` for 9 AM Monday-Friday). See [cron syntax](https://www.npmjs.com/package/node-cron#cron-syntax).
+- `handler` is an async function that receives the `app` instance. Call `app.client.chat.postMessage()` to send messages to the channel specified in `MAIN_CHANNEL` env variable.
+- Import and add your feature to the `features` array in `src/cronFeatures/index.ts`.
+- Test with `/test-cron <number>` command in development to manually trigger jobs without waiting for the schedule.
+
 #### Utils
 
 - `getRandomElement` - get random element from an array.
@@ -76,6 +86,5 @@ yarn dev
 
 ### TODO:
 
-- Moon phases (requires new feature category `scheduledFeatures`)
 - Horoscope
 - More ideas please :)
