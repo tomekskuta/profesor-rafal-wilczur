@@ -5,6 +5,8 @@ export const getFeatureObject = (
 ): Record<string, MentionFeature['middleware']> => {
   const { question, middleware } = feature;
 
+  if (!question) return {};
+
   if (typeof question === 'string') {
     return {
       [question]: middleware,

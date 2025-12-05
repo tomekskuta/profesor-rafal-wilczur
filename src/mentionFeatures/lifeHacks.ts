@@ -76,7 +76,7 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
       system: systemPrompt,
       prompt: 'jak żyć?',
       temperature: 1.4,
-      maxTokens: 1024,
+      maxOutputTokens: 1024,
     });
     
     await say(text);

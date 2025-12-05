@@ -1,6 +1,6 @@
 import type { MentionFeature } from '../types';
 
-// TODO: Question for Profesor, on slack is used after mentioning Profesor - string | string[]
+// TODO: (optional if you use mather func) Question for Profesor, on slack is used after mentioning Profesor - string | string[]
 const question: MentionFeature['question'] = 'your question';
 
 const matcher: MentionFeature['matcher'] = (message) => {

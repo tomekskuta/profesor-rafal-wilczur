@@ -6,7 +6,7 @@ Slack bot using `@slack/bolt` with Socket Mode. Entry point: `src/index.ts`
 
 ### 1. Mention Features (`src/mentionFeatures/`)
 Triggered by `@Profesor Rafał Wilczur` mentions. Each feature exports:
-- `question`: string[] - trigger keywords
+- `question`: (optional if use matcher) string[] - trigger keywords
 - `middleware`: async handler
 - `matcher`: (optional) custom pattern matching
 

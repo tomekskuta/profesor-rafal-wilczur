@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
+    "dev:debug": "nodemon --exec \"node --inspect -r ts-node/register\" src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "eslint .",
@@ -29,9 +30,9 @@
     "typescript-eslint": "^8.48.1"
   },
   "dependencies": {
-    "@ai-sdk/groq": "^1.0.8",
+    "@ai-sdk/groq": "2.0.32",
     "@slack/bolt": "^3.12.2",
-    "ai": "^4.0.18",
+    "ai": "^5.0.106",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "node-cron": "^4.2.1",

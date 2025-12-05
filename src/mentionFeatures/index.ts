@@ -12,6 +12,7 @@ import willBeGood from './willBeGood';
 import willISuccede from './willISuccede';
 import askQuestion from './askQuestion';
 import thankyou from './thankyou';
+import weather from './weather';
 
 const features: MentionFeature[] = [
   // TODO: Here you may add your mention feature
@@ -24,6 +25,7 @@ const features: MentionFeature[] = [
   willISuccede,
   askQuestion,
   thankyou,
+  weather,
 ];
 
 const featuresObject: Record<string, MentionFeature['middleware']> = features.reduce(

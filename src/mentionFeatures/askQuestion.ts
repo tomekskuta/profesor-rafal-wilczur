@@ -102,7 +102,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
       system: systemPrompt,
       prompt: questionText,
       temperature: 1.2,
-      maxTokens: 512,
+      maxOutputTokens: 512,
     });
 
     await say(aiResponse);
