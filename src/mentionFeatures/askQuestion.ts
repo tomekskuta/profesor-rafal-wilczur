@@ -99,7 +99,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
       return;
     }
 
-    const { text: aiResponse } = await generateText({
+    const { text: aiResponse, finishReason, usage } = await generateText({
       model: groq(GROQ_LLM_MODEL),
       system: systemPrompt,
       prompt: questionText,
@@ -107,7 +107,18 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
       maxOutputTokens: 512,
     });
 
-    await say(aiResponse);
+    if (!aiResponse.trim()) {
+      console.error('[WARN] askQuestion got empty LLM response:', {
+        finishReason,
+        usage,
+        questionText,
+      });
+    }
+
+    await say(
+      aiResponse.trim() ||
+        `<@${user}>, kryształowa kula milczy... spróbuj zapytać inaczej :crystal_ball:`,
+    );
   } catch (error) {
     console.error(
       '[ERROR] Error in askQuestion middleware:',
