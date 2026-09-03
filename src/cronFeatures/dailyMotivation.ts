@@ -2,6 +2,7 @@ import { generateText } from 'ai';
 import { createGroq } from '@ai-sdk/groq';
 import fetch from 'node-fetch';
 
+import { GROQ_LLM_MODEL } from '../constants';
 import type { CronFeature } from '../types';
 
 type WeatherData = {
@@ -68,7 +69,7 @@ const feature: CronFeature = {
     const questionText = createQuestion(weatherData);
 
     const { text } = await generateText({
-      model: groq('llama-3.1-8b-instant'),
+      model: groq(GROQ_LLM_MODEL),
       system: systemPrompt,
       prompt: questionText,
       temperature: 1.2,

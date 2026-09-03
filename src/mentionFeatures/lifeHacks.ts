@@ -3,6 +3,8 @@ import { getRandomElement } from '../utils/getRandomElement';
 import { generateText } from 'ai';
 import { createGroq } from '@ai-sdk/groq';
 
+import { GROQ_LLM_MODEL } from '../constants';
+
 const question: MentionFeature['question'] = [
   'jak żyć?',
   'jak żyć',
@@ -72,7 +74,7 @@ const middleware: MentionFeature['middleware'] = async ({ say }) => {
 
   try {
     const { text } = await generateText({
-      model: groq('llama-3.3-70b-versatile'),
+      model: groq(GROQ_LLM_MODEL),
       system: systemPrompt,
       prompt: 'jak żyć?',
       temperature: 1.4,

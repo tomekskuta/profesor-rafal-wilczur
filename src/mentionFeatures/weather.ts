@@ -3,6 +3,7 @@ import { createGroq } from '@ai-sdk/groq';
 import fetch from 'node-fetch';
 import { z } from 'zod/v4';
 
+import { GROQ_LLM_MODEL } from '../constants';
 import type { MentionFeature } from '../types';
 
 const matcher: MentionFeature['matcher'] = (message) => {
@@ -30,7 +31,7 @@ const groq = createGroq({
 });
 
 const profesorWeatherAgent = new Agent({
-  model: groq('llama-3.1-8b-instant'),
+  model: groq(GROQ_LLM_MODEL),
   system: systemPrompt,
   tools: {
     weather: tool({

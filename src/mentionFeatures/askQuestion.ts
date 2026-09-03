@@ -2,6 +2,8 @@ import type { MentionFeature } from '../types';
 import { generateText } from 'ai';
 import { createGroq } from '@ai-sdk/groq';
 
+import { GROQ_LLM_MODEL } from '../constants';
+
 const question: MentionFeature['question'] = ['pytanie'];
 
 const questionPatterns = [
@@ -98,7 +100,7 @@ const middleware: MentionFeature['middleware'] = async ({ say, event }) => {
     }
 
     const { text: aiResponse } = await generateText({
-      model: groq('llama-3.3-70b-versatile'),
+      model: groq(GROQ_LLM_MODEL),
       system: systemPrompt,
       prompt: questionText,
       temperature: 1.2,
